@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="dark" />
+  <title>Northlight Studio — Premium Website Templates (HTML + Tailwind)</title>
+  <meta name="description" content="Northlight Studio builds premium, hand-coded website templates with HTML + Tailwind CSS — dark SaaS, AI and creative landing pages. Responsive, accessible, easy to rebrand." />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Northlight Studio — Premium Website Templates" />
+  <meta property="og:description" content="Premium, hand-coded website templates: HTML + Tailwind, responsive, accessible, easy to rebrand." />
+  <meta property="og:url" content="https://mcmxcixx.github.io/" />
+
+  <!-- ============================================================= -->
+  <!-- ↓↓↓  PINTEREST DOMAIN VERIFICATION  ↓↓↓                         -->
+  <!-- Pinterest → Settings → Claimed accounts → Claim website →       -->
+  <!-- Add HTML tag → copy the value into content="" below, then push. -->
+  <meta name="p:domain_verify" content="PASTE_YOUR_PINTEREST_CODE_HERE" />
+  <!-- ============================================================= -->
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230A0E1A'/%3E%3Ccircle cx='16' cy='16' r='7' fill='%236E8BFF'/%3E%3C/svg%3E" />
+
+  <style>
+    :root {
+      --bg: #080b14; --panel: #0e1426; --panel-2: #121a30;
+      --text: #f2f5fb; --muted: #9ba6bc; --border: #222c44;
+      --accent: #6e8bff; --accent-ink: #0a0e1a;
+      --maxw: 1080px;
+      --sans: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans); background: var(--bg); color: var(--text);
+      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; height: auto; }
+    .wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 24px; }
+    :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+
+    /* glow */
+    .glow { position: fixed; inset: 0; z-index: -1; pointer-events: none; }
+    .glow::before {
+      content: ""; position: absolute; top: -10%; left: 50%; transform: translateX(-50%);
+      width: 900px; height: 700px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(110,139,255,.20), transparent 62%); filter: blur(20px);
+    }
+
+    /* nav */
+    header { position: sticky; top: 0; z-index: 10; backdrop-filter: blur(10px);
+      background: rgba(8,11,20,.6); border-bottom: 1px solid transparent; transition: border-color .2s; }
+    header.scrolled { border-bottom-color: var(--border); }
+    .nav { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+    .brand { display: flex; align-items: center; gap: 10px; font-weight: 700; letter-spacing: -.02em; }
+    .mark { width: 26px; height: 26px; border-radius: 8px; background: var(--panel);
+      display: grid; place-items: center; border: 1px solid var(--border); }
+    .mark span { width: 11px; height: 11px; border-radius: 50%; background: var(--accent);
+      box-shadow: 0 0 14px rgba(110,139,255,.8); }
+    .nav-links { display: flex; gap: 26px; align-items: center; font-size: .95rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+
+    /* buttons */
+    .btn { display: inline-flex; align-items: center; gap: 8px; font-weight: 700; font-size: .95rem;
+      padding: 12px 22px; border-radius: 999px; border: 1px solid var(--border); color: var(--text);
+      transition: transform .15s, background .15s, border-color .15s; white-space: nowrap; }
+    .btn:hover { transform: translateY(-1px); border-color: #36436a; }
+    .btn-primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+    .btn-primary:hover { background: #8aa0ff; border-color: #8aa0ff; }
+
+    /* hero */
+    .hero { padding: 96px 0 72px; text-align: center; }
+    .eyebrow { display: inline-block; font-size: .8rem; font-weight: 800; letter-spacing: .22em;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 22px; }
+    .hero h1 { font-size: clamp(2.4rem, 6vw, 4.4rem); line-height: 1.04; font-weight: 800;
+      letter-spacing: -.035em; margin-bottom: 22px; }
+    .hero h1 .accent { color: var(--accent); }
+    .hero p { max-width: 640px; margin: 0 auto 34px; color: var(--muted); font-size: clamp(1rem, 2vw, 1.18rem); }
+    .cta-row { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+
+    /* section */
+    section.block { padding: 56px 0; }
+    .sec-head { margin-bottom: 30px; }
+    .sec-head .kicker { font-size: .8rem; font-weight: 800; letter-spacing: .2em; text-transform: uppercase; color: var(--muted); }
+    .sec-head h2 { font-size: clamp(1.6rem, 3.4vw, 2.2rem); font-weight: 800; letter-spacing: -.025em; margin-top: 8px; }
+
+    /* templates grid */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 22px; }
+    .card { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; overflow: hidden;
+      transition: transform .18s, border-color .18s; }
+    .card:hover { transform: translateY(-3px); border-color: #36436a; }
+    .card .shot { aspect-ratio: 16 / 10; overflow: hidden; border-bottom: 1px solid var(--border); background: var(--panel-2); }
+    .card .shot img { width: 100%; height: 100%; object-fit: cover; }
+    .card .body { padding: 22px; }
+    .tag { font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--accent); }
+    .card h3 { font-size: 1.25rem; font-weight: 800; letter-spacing: -.02em; margin: 8px 0 8px; }
+    .card p { color: var(--muted); font-size: .95rem; margin-bottom: 18px; }
+    .card .row { display: flex; gap: 10px; flex-wrap: wrap; }
+    .card .btn { padding: 10px 18px; font-size: .9rem; }
+
+    .soon { background: linear-gradient(160deg, var(--panel), var(--bg)); border-style: dashed;
+      display: grid; place-items: center; min-height: 260px; text-align: center; color: var(--muted); }
+    .soon strong { color: var(--text); display: block; margin-bottom: 6px; }
+
+    /* about strip */
+    .strip { background: var(--panel); border: 1px solid var(--border); border-radius: 18px; padding: 34px;
+      display: flex; gap: 28px; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .strip p { color: var(--muted); max-width: 560px; }
+    .strip h2 { font-size: 1.5rem; font-weight: 800; letter-spacing: -.02em; margin-bottom: 8px; color: var(--text); }
+
+    /* footer */
+    footer { border-top: 1px solid var(--border); margin-top: 40px; padding: 38px 0; color: var(--muted); }
+    .foot { display: flex; gap: 18px; flex-wrap: wrap; justify-content: space-between; align-items: center; }
+    .foot a:hover { color: var(--text); }
+    .foot .links { display: flex; gap: 22px; flex-wrap: wrap; }
+
+    @media (max-width: 620px) { .nav-links { display: none; } .hero { padding-top: 64px; } }
+  </style>
+</head>
+<body>
+  <div class="glow" aria-hidden="true"></div>
+
+  <header id="top">
+    <div class="wrap nav">
+      <a class="brand" href="#top" aria-label="Northlight Studio home">
+        <span class="mark" aria-hidden="true"><span></span></span>
+        Northlight Studio
+      </a>
+      <nav class="nav-links" aria-label="Primary">
+        <a href="#templates">Templates</a>
+        <a href="#about">About</a>
+        <a href="https://github.com/MCMXCIXX" target="_blank" rel="noopener">GitHub</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <span class="eyebrow">Premium website templates</span>
+        <h1>Hand-coded templates that look<br /><span class="accent">studio-made.</span></h1>
+        <p>Northlight Studio builds premium landing-page templates in clean HTML&nbsp;+&nbsp;Tailwind CSS — dark SaaS, AI and creative. Fully responsive, accessible, and rebrandable in one click.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#templates">Browse templates</a>
+          <a class="btn" href="https://github.com/MCMXCIXX" target="_blank" rel="noopener">GitHub →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="templates">
+      <div class="wrap">
+        <div class="sec-head">
+          <span class="kicker">The collection</span>
+          <h2>Templates</h2>
+        </div>
+        <div class="grid">
+
+          <!-- Lumen -->
+          <article class="card">
+            <div class="shot"><img src="lumen.jpg" alt="Lumen — dark mode SaaS landing page template" loading="lazy" /></div>
+            <div class="body">
+              <span class="tag">Dark · SaaS / AI</span>
+              <h3>Lumen</h3>
+              <p>A premium dark-mode SaaS &amp; AI landing page — 13 sections, live product mockup, pricing, FAQ. HTML + Tailwind, no build step.</p>
+              <div class="row">
+                <a class="btn btn-primary" href="https://mcmxcixx.github.io/lumen-saas-landing/" target="_blank" rel="noopener">Live demo</a>
+                <a class="btn" href="https://www.getly.store/product/lumen-ai-saas-landing-page-template-html-tailwind-dark" target="_blank" rel="noopener">Get it →</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Add more template cards here as the collection grows -->
+          <article class="card soon">
+            <div>
+              <strong>More on the way</strong>
+              New premium templates added regularly.
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="about">
+      <div class="wrap">
+        <div class="strip">
+          <div>
+            <h2>Built to look expensive — and easy to make yours.</h2>
+            <p>Every template ships as static HTML + Tailwind CSS: no framework lock-in, no build step, self-hosted fonts, WCAG&nbsp;AA contrast, and Lighthouse scores in the high 90s. Swap one accent color and the whole page re-skins.</p>
+          </div>
+          <a class="btn btn-primary" href="https://www.getly.store/product/lumen-ai-saas-landing-page-template-html-tailwind-dark" target="_blank" rel="noopener">Shop on Getly</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap foot">
+      <span>© 2026 Northlight Studio</span>
+      <div class="links">
+        <a href="https://www.getly.store/product/lumen-ai-saas-landing-page-template-html-tailwind-dark" target="_blank" rel="noopener">Getly</a>
+        <a href="https://app.lava.top/products/0cce0f66-b92a-4a07-b90c-be3d5b5ac73c" target="_blank" rel="noopener">Lava.top</a>
+        <a href="https://github.com/MCMXCIXX" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    addEventListener('scroll', () => {
+      document.querySelector('header').classList.toggle('scrolled', scrollY > 20);
+    }, { passive: true });
+  </script>
+</body>
+</html>
